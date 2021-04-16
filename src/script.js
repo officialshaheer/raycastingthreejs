@@ -8,7 +8,7 @@ import gsap from 'gsap';
 const textureLoader = new THREE.TextureLoader();
 
 // Debug
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -16,7 +16,7 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene();
 
-const geometry = new THREE.PlaneGeometry(1,1.3);
+const geometry = new THREE.PlaneGeometry(2,1.3);
 
 for(let i = 1; i < 5; i++) {
     const material = new THREE.MeshBasicMaterial({
@@ -86,7 +86,7 @@ camera.position.y = 0
 camera.position.z = 2
 scene.add(camera)
 
-gui.add(camera.position, 'y').min(-10).max(10);
+// gui.add(camera.position, 'y').min(-10).max(10);
 
 // Controls
 // const controls = new OrbitControls(camera, canvas)
@@ -153,12 +153,14 @@ const tick = () =>
         // intersect.object.scale.set(1.1,1.1);
         gsap.to(intersect.object.scale, {x:1.7, y:1.7});
         gsap.to(intersect.object.rotation, {y:-.5});
+        gsap.to(intersect.object.position, {z: -0.9});
     }
 
     for (const object of objs) {
         if(!intersects.find(intersect => intersect.object === object)) {
             gsap.to(object.scale, {x: 1, y:1});
             gsap.to(object.rotation, {y:0});
+            gsap.to(object.position, {z:0});
         }
     }
 
