@@ -16,7 +16,7 @@ const canvas = document.querySelector('canvas.webgl')
 // Scene
 const scene = new THREE.Scene();
 
-const geometry = new THREE.PlaneGeometry(2,1.3);
+const geometry = new THREE.BoxGeometry(2,1.3);
 
 for(let i = 1; i < 5; i++) {
     const material = new THREE.MeshBasicMaterial({
